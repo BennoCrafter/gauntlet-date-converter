@@ -1,6 +1,6 @@
 # Date Converter
 
-Convert dates between different formats.
+Convert dates between common formats
 
 ![preview-1](metadata/date-converter-1.jpg)
 

@@ -3,7 +3,7 @@
 [gauntlet]
 name = 'Date Converter'
 description = """
-Convert date to different formats
+Convert dates between common formats
 """
 
 [[entrypoint]]
@@ -12,7 +12,7 @@ name = 'Convert Date'
 path = 'src/convert-date.tsx'
 type = 'view'
 description = """
-Convert date to different formats
+Convert dates between common formats
 """
 icon = "icon.png"
 

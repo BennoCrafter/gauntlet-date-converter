@@ -1,0 +1,21 @@
+# "$schema" = "https://raw.githubusercontent.com/project-gauntlet/gauntlet/refs/heads/main/docs/schema/plugin_manifest.schema.json"
+
+[gauntlet]
+name = 'Date Converter'
+description = """
+Convert dates between common formats
+"""
+
+[[entrypoint]]
+id = 'convert-date'
+name = 'Convert Date'
+path = 'src/convert-date.tsx'
+type = 'view'
+description = """
+Convert dates between common formats
+"""
+icon = "icon.png"
+
+
+[permissions]
+clipboard = ["write"]

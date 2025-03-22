@@ -139,6 +139,7 @@ export default function ConvertDate(): ReactElement {
                   Clipboard.writeText(formattedDate);
                   showHud("Date copied to clipboard");
                 }
+                return { close: true };
               }}
             />
           ))}

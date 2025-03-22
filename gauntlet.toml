@@ -6,6 +6,11 @@ description = """
 Convert dates between common formats
 """
 
+# [[gauntlet.authors]]
+# name = "BennoCrafter"
+# uris = ["https://github.com/BennoCrafter"]
+
+
 [[entrypoint]]
 id = 'convert-date'
 name = 'Convert Date'

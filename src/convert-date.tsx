@@ -116,28 +116,26 @@ function getResults(query: string): LabeledDate[] {
 export default function ConvertDate(): ReactElement {
   const [inputDate, setInputDate] = useState<string | undefined>("");
   const [tz, setTz] = useState(LOCAL_TIMEZONE);
-  const [selectedDate, setSelectedDate] = useState<string | undefined>();
 
   const results = useMemo(() => getResults(inputDate || ""), [inputDate]);
 
   return (
     <List
       isLoading={false}
-      onItemFocusChange={setSelectedDate}
       actions={
         <ActionPanel>
           {DATE_FORMATS.map((format) => (
             <Action
               key={format.id}
               label={format.title}
-              onAction={() => {
+              onAction={(id: string | undefined) => {
                 const date = results.find(
-                  (r) => r.date.toISOString() === selectedDate,
+                  (r) => r.date.toISOString() === id,
                 )?.date;
                 if (date) {
                   const formattedDate = format.format(date, tz);
                   Clipboard.writeText(formattedDate);
-                  showHud("Date copied to clipboard");
+                  showHud(`${format.title} copied to clipboard`);
                 }
                 return { close: true };
               }}

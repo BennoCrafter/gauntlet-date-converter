@@ -90,18 +90,17 @@ function getResults(query) {
 function ConvertDate() {
     const [inputDate, setInputDate] = useState("");
     const [tz, setTz] = useState(LOCAL_TIMEZONE);
-    const [selectedDate, setSelectedDate] = useState();
     const results = useMemo(() => getResults(inputDate || ""), [inputDate]);
-    return (jsxs(List, { isLoading: false, onItemFocusChange: setSelectedDate, actions: jsx(ActionPanel, { children: DATE_FORMATS.map((format) => (jsx(Action, { label: format.title, onAction: () => {
-                    const date = results.find((r) => r.date.toISOString() === selectedDate)?.date;
+    return (jsxs(List, { isLoading: false, actions: jsx(ActionPanel, { children: DATE_FORMATS.map((format) => (jsx(Action, { label: format.title, onAction: (id) => {
+                    const date = results.find((r) => r.date.toISOString() === id)?.date;
                     if (date) {
                         const formattedDate = format.format(date, tz);
                         Clipboard.writeText(formattedDate);
-                        showHud("Date copied to clipboard");
+                        showHud(`${format.title} copied to clipboard`);
                     }
                     return { close: true };
                 } }, format.id))) }), children: [jsx(List.SearchBar, { placeholder: "Enter any kind of date", value: inputDate, onChange: setInputDate }), results.map(({ date, label }) => (jsx(List.Section.Item, { title: dayjs(date).tz(tz).format(DEFAULT_DATE_FORMAT), subtitle: `${label} - ${timeAgo.format(date)}`, id: date.toISOString() }, date.toISOString())))] }));
 }
 
 export { ConvertDate as default };
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29udmVydC1kYXRlLmpzIiwic291cmNlcyI6W10sInNvdXJjZXNDb250ZW50IjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7In0=
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29udmVydC1kYXRlLmpzIiwic291cmNlcyI6W10sInNvdXJjZXNDb250ZW50IjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OzsifQ==
